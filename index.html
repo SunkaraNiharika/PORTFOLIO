@@ -1,118 +1,509 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { background: #f4f4f4; color: #333; }
-    header { background: #1a1a1a; color: white; padding: 40px 20px; text-align: center; }
-    header h1 { font-size: 2.5rem; }
-
-    nav { background: #fff; padding: 15px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    nav a { margin: 0 15px; text-decoration: none; color: #333; font-weight: bold; }
-    nav a:hover { color: #007bff; }
-
-    section { padding: 50px 20px; max-width: 900px; margin: auto; }
-    h2 { margin-bottom: 20px; color: #111; font-size: 2rem; border-left: 4px solid #007bff; padding-left: 10px; }
-    p { line-height: 1.6; margin-bottom: 15px; }
-
-    .skills-list, .projects-list { list-style: none; }
-    .skills-list li, .projects-list li { background: white; padding: 15px; margin-bottom: 10px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-
-    footer { background: #1a1a1a; color: white; text-align: center; padding: 20px; margin-top: 40px; }
-
-    .contact-box { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    input, textarea { width: 100%; padding: 12px; margin-top: 10px; border: 1px solid #ccc; border-radius: 5px; }
-    button { background: #007bff; color: white; padding: 12px 18px; border: none; border-radius: 5px; margin-top: 10px; cursor: pointer; }
-    button:hover { background: #005fcc; }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Niharika Sunkara — Portfolio</title>
+  <!-- Minimal meta + favicon placeholder -->
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
-<body>
+<body style="margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;smooth-font-smoothing:antialiased;background:#0f1720;color:#e6eef8;line-height:1.5;">
 
-  <header>
-    <h1>Niharika Sunkara</h1>
-    <p>Computer Science Graduate | AI & Data Science Enthusiast | Web Developer</p>
+  <!-- NAV -->
+  <header style="position:sticky;top:0;z-index:1000;background:linear-gradient(180deg,rgba(6,10,15,0.85),rgba(6,10,15,0.6));backdrop-filter:blur(6px);padding:12px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.03);">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="width:48px;height:48px;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#7c3aed,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:16px;">
+        SN
+      </div>
+      <div style="display:flex;flex-direction:column;">
+        <div style="font-weight:800;color:#f9fafb;">Sunkara Niharika</div>
+        <div style="font-size:12px;color:#9aa6b2;margin-top:2px;">AI | Data Science | Web Dev</div>
+      </div>
+    </div>
+    <nav style="display:flex;gap:14px;align-items:center;">
+      <a href="#home" style="color:#cfe8ff;text-decoration:none;font-weight:600;">Home</a>
+      <a href="#about" style="color:#9aa6b2;text-decoration:none;">About</a>
+      <a href="#skills" style="color:#9aa6b2;text-decoration:none;">Skills</a>
+      <a href="#projects" style="color:#9aa6b2;text-decoration:none;">Projects</a>
+      <a href="#certs" style="color:#9aa6b2;text-decoration:none;">Certs</a>
+      <a href="#contact" style="color:#9aa6b2;text-decoration:none;">Contact</a>
+      <a href="mailto:nihariaksunkara1@gmail.com" style="background:#0ea5a4;padding:8px 12px;border-radius:8px;color:#012; font-weight:700;text-decoration:none;">Hire Me</a>
+    </nav>
   </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <!-- HERO -->
+  <section id="home" style="padding:56px 6vw;display:flex;gap:40px;align-items:center;min-height:56vh;background:linear-gradient(180deg,#0b1220 0%, #0f1922 100%);position:relative;overflow:hidden;">
+    <!-- animated floating shapes -->
+    <div id="shapes" style="position:absolute;inset:0;pointer-events:none;">
+      <canvas id="floatCanvas" width="0" height="0" style="position:absolute;left:0;top:0;opacity:0.12;filter:blur(12px);"></canvas>
+    </div>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I am an enthusiastic and detail-oriented Computer Science Engineering graduate specializing in Artificial Intelligence. I bring strong skills in Python, Machine Learning, Data Analysis, and Web Development. I am passionate about solving problems using data-driven approaches and creating user-friendly applications. I enjoy learning new technologies and building innovative solutions.</p>
-    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/niharika-sunkara-b5b5b423a" target="_blank">Visit Profile</a></p>
+    <div style="flex:1;max-width:720px;">
+      <div style="font-size:18px;color:#7dd3fc;margin-bottom:10px;font-weight:700;letter-spacing:0.6px;">Hello — I'm</div>
+      <h1 style="margin:0;font-size:36px;line-height:1.05;color:#e6eef8;font-weight:800;">Sunkara Niharika <span style="display:inline-block;background:linear-gradient(90deg,#a78bfa,#60a5fa);-webkit-background-clip:text;background-clip:text;color:transparent;">.</span></h1>
+      <p id="typed" style="margin:18px 0 8px;font-size:18px;color:#bcd7ff;min-height:28px;"></p>
+      <p style="color:#9fb4cf;max-width:56ch;">
+        Enthusiastic Computer Science graduate specializing in <strong>Artificial Intelligence</strong>. Passionate about machine learning, data visualization and creating practical web & AI solutions.
+      </p>
+      <div style="display:flex;gap:12px;margin-top:18px;">
+        <a href="./SUNKARA_NIHARIKA_RESUME.pdf" download style="display:inline-block;padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,#60a5fa,#7c3aed);color:#fff;font-weight:700;text-decoration:none;">Resume (PDF)</a>
+        <a href="mailto:nihariaksunkara1@gmail.com" style="display:inline-block;padding:10px 16px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:#cfe8ff;text-decoration:none;">Contact</a>
+      </div>
+      <div style="margin-top:22px;display:flex;gap:12px;align-items:center;">
+        <a href="https://www.linkedin.com/in/niharika-sunkara-b5b5b423a/" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.02);text-decoration:none;color:#cfe8ff;font-weight:700;">
+          LinkedIn
+        </a>
+        <a href="#" onclick="openModalProject('stocks')" style="display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.02);text-decoration:none;color:#cfe8ff;font-weight:700;">
+          View Projects
+        </a>
+      </div>
+    </div>
+
+    <div style="width:320px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;">
+      <div style="width:300px;background:linear-gradient(180deg,#111827,#0b1220);padding:18px;border-radius:14px;box-shadow:0 10px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03);">
+        <div style="display:flex;gap:12px;align-items:center;">
+          <div style="width:72px;height:72px;background:linear-gradient(135deg,#fb7185,#f97316);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:22px;">SN</div>
+          <div>
+            <div style="font-weight:800;color:#e6eef8;">Sunkara Niharika</div>
+            <div style="font-size:13px;color:#9aa6b2;margin-top:4px;">AI | Data Science Intern</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;color:#9fb4cf;font-size:14px;">
+          B.Tech in CSE — BESTIU • CGPA 9.0<br />
+          Focus: ML, Data Viz, Web Dev
+        </div>
+        <div style="margin-top:14px;display:flex;gap:8px;">
+          <div style="flex:1;padding:10px;border-radius:8px;background:rgba(255,255,255,0.02);text-align:center;">
+            <div style="font-weight:800;color:#cfe8ff;">Power BI</div>
+            <div style="font-size:12px;color:#9aa6b2;">Dashboards</div>
+          </div>
+          <div style="flex:1;padding:10px;border-radius:8px;background:rgba(255,255,255,0.02);text-align:center;">
+            <div style="font-weight:800;color:#cfe8ff;">Python</div>
+            <div style="font-size:12px;color:#9aa6b2;">ML & Analysis</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;width:300px;display:flex;justify-content:center;gap:12px;">
+        <a href="#projects" style="padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,#34d399,#06b6d4);text-decoration:none;color:#012;font-weight:700;">See Work</a>
+        <a href="#contact" style="padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);text-decoration:none;color:#cfe8ff;">Let's talk</a>
+      </div>
+    </div>
   </section>
-<!-- auto deploy test -->
 
-<!-- hook test -->
- <!-- hook test final -->
-  <!-- hook test working -->
+  <!-- ABOUT -->
+  <section id="about" style="padding:44px 6vw;background:linear-gradient(180deg,#0f1720 0%, #0b1220 100%);border-top:1px solid rgba(255,255,255,0.02);">
+    <div style="max-width:1100px;margin:0 auto;display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
+      <div style="flex:1;min-width:260px;background:linear-gradient(180deg,#0b1220,#0b1220);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 8px 30px rgba(2,6,23,0.45);">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='560' height='420'><rect width='100%' height='100%' fill='%230b1220'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23fff' font-size='28' font-family='Arial'>Profile Photo</text></svg>" alt="Profile" style="width:100%;border-radius:8px;display:block;">
+      </div>
 
-  
-<!-- auto hook finally working -->
+      <div style="flex:2;min-width:300px;">
+        <div style="color:#86efac;font-weight:800;margin-bottom:8px;">About me</div>
+        <h2 style="margin:0 0 12px;font-size:24px;color:#e6eef8;">Brief</h2>
+        <p style="color:#9fb4cf;margin:0 0 12px;">
+          My name is <strong>Sunkara Niharika</strong>. I am a Computer Science graduate specializing in <strong>Artificial Intelligence</strong> with hands-on experience in data analytics, visualization and web development. I enjoy transforming data into actionable insights and building intuitive interfaces for users.
+        </p>
+        <p style="color:#9fb4cf;margin:0 0 18px;">
+          I completed internships like Data Science & Analytics at Innovate Intern, built stock analysis pipelines on AWS and dashboards in Power BI. I love learning about new AI methods and continuously improving through projects and courses.
+        </p>
 
-<!-- auto hook finally working -->
-
-
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul class="skills-list">
-      <li>Python, HTML, CSS, JavaScript</li>
-      <li>Machine Learning & Data Analytics</li>
-      <li>SQL & MySQL</li>
-      <li>Power BI, Tableau, Google Colab</li>
-      <li>Web Development (Front-end)</li>
-      <li>Problem Solving & Communication</li>
-    </ul>
-  </section>
-<!-- test deploy -->
-hii
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul class="projects-list">
-      <li><strong>Google Stocks Analysis (AWS)</strong> – Used AWS S3, ETL, and Redshift for data warehousing and analysis.</li>
-      <li><strong>Customer Sales Analytics (Power BI)</strong> – Built dashboards and KPIs for Sony dataset.</li>
-      <li><strong>Chatbot Analytics Framework</strong> – Created a mini-analytics chatbot during internship.</li>
-      <li><strong>Minor Portfolio Website</strong> – Clean responsive design using HTML, CSS & JS.</li>
-    </ul>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <div style="background:rgba(255,255,255,0.02);padding:10px 12px;border-radius:10px;font-weight:700;color:#cfe8ff;">B.Tech CSE — CGPA 9.0</div>
+          <div style="background:rgba(255,255,255,0.02);padding:10px 12px;border-radius:10px;font-weight:700;color:#cfe8ff;">Power BI • Tableau</div>
+          <div style="background:rgba(255,255,255,0.02);padding:10px 12px;border-radius:10px;font-weight:700;color:#cfe8ff;">ML • Data Viz</div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <div class="contact-box">
-      <form id="contactForm">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea placeholder="Your Message" rows="4" required></textarea>
-        <button type="submit">Send Message</button>
+  <!-- SKILLS -->
+  <section id="skills" style="padding:36px 6vw;border-top:1px dashed rgba(255,255,255,0.02);">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+        <h3 style="margin:0;color:#e6eef8;">Skills</h3>
+        <div style="color:#9aa6b2;font-weight:600;">Technical & Tools</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px;">
+        <!-- skill card: each card has inline style -->
+        <div style="background:linear-gradient(180deg,rgba(255,255,255,0.015),rgba(255,255,255,0.01));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <div style="font-weight:800;color:#cfe8ff;">Python</div>
+              <div style="font-size:12px;color:#9aa6b2;margin-top:6px;">ML, scripting, data analysis</div>
+            </div>
+            <div style="font-weight:800;color:#60a5fa;">90%</div>
+          </div>
+          <div style="height:10px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden;margin-top:10px;">
+            <div class="bar" data-val="90" style="height:100%;width:0;background:linear-gradient(90deg,#60a5fa,#7c3aed);"></div>
+          </div>
+        </div>
+
+        <div style="background:linear-gradient(180deg,rgba(255,255,255,0.015),rgba(255,255,255,0.01));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <div style="font-weight:800;color:#cfe8ff;">Power BI</div>
+              <div style="font-size:12px;color:#9aa6b2;margin-top:6px;">Dashboards & reporting</div>
+            </div>
+            <div style="font-weight:800;color:#34d399;">88%</div>
+          </div>
+          <div style="height:10px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden;margin-top:10px;">
+            <div class="bar" data-val="88" style="height:100%;width:0;background:linear-gradient(90deg,#34d399,#06b6d4);"></div>
+          </div>
+        </div>
+
+        <div style="background:linear-gradient(180deg,rgba(255,255,255,0.015),rgba(255,255,255,0.01));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <div style="font-weight:800;color:#cfe8ff;">SQL & Databases</div>
+              <div style="font-size:12px;color:#9aa6b2;margin-top:6px;">MySQL, warehousing</div>
+            </div>
+            <div style="font-weight:800;color:#f97316;">82%</div>
+          </div>
+          <div style="height:10px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden;margin-top:10px;">
+            <div class="bar" data-val="82" style="height:100%;width:0;background:linear-gradient(90deg,#f97316,#fb7185);"></div>
+          </div>
+        </div>
+
+        <div style="background:linear-gradient(180deg,rgba(255,255,255,0.015),rgba(255,255,255,0.01));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <div style="font-weight:800;color:#cfe8ff;">Web Dev</div>
+              <div style="font-size:12px;color:#9aa6b2;margin-top:6px;">HTML, CSS, JS, Node</div>
+            </div>
+            <div style="font-weight:800;color:#60a5fa;">78%</div>
+          </div>
+          <div style="height:10px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden;margin-top:10px;">
+            <div class="bar" data-val="78" style="height:100%;width:0;background:linear-gradient(90deg,#60a5fa,#7c3aed);"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
+        <div style="padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.02);font-weight:700;color:#cfe8ff;">Google Colab</div>
+        <div style="padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.02);font-weight:700;color:#cfe8ff;">Tableau</div>
+        <div style="padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.02);font-weight:700;color:#cfe8ff;">AWS (S3, Redshift)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" style="padding:44px 6vw;border-top:1px solid rgba(255,255,255,0.02);">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <h3 style="margin:0;color:#e6eef8;">Selected Projects</h3>
+        <div style="color:#9aa6b2;">Interactive demos & case studies</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:18px;">
+        <!-- Project 1 -->
+        <article onclick="openModalProject('stocks')" style="cursor:pointer;border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(2,6,23,0.45);background:linear-gradient(180deg,#0b1220,#0f1720);border:1px solid rgba(255,255,255,0.02);">
+          <div style="height:180px;background:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22720%22 height=%22720%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230b1220%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-size=%2232%22 font-family=%22Arial%22>Google Stocks Analysis</text></svg>') center/cover no-repeat;"></div>
+          <div style="padding:14px;">
+            <div style="font-weight:800;color:#60a5fa;">Google Stocks Analysis</div>
+            <div style="color:#9aa6b2;margin-top:8px;">Built an AWS-powered pipeline using S3, ETL & Redshift to analyze Google stock time series. Visualized insights & anomalies.</div>
+            <div style="margin-top:10px;color:#34d399;font-weight:800;">View case study →</div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article onclick="openModalProject('sales')" style="cursor:pointer;border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(2,6,23,0.45);background:linear-gradient(180deg,#0b1220,#0f1720);border:1px solid rgba(255,255,255,0.02);">
+          <div style="height:180px;background:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22720%22 height=%22720%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230b1220%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-size=%2232%22 font-family=%22Arial%22>Power BI Sales Dash</text></svg>') center/cover no-repeat;"></div>
+          <div style="padding:14px;">
+            <div style="font-weight:800;color:#7c3aed;">Customer Sales Analytics (Power BI)</div>
+            <div style="color:#9aa6b2;margin-top:8px;">KPIs, interactive dashboards and drill-down reports built using company dataset to surface insights for stakeholders.</div>
+            <div style="margin-top:10px;color:#60a5fa;font-weight:800;">View dashboard →</div>
+          </div>
+        </article>
+
+        <!-- Project 3 (web internship) -->
+        <article onclick="openModalProject('web')" style="cursor:pointer;border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(2,6,23,0.45);background:linear-gradient(180deg,#0b1220,#0f1720);border:1px solid rgba(255,255,255,0.02);">
+          <div style="height:180px;background:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22720%22 height=%22720%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230b1220%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-size=%2232%22 font-family=%22Arial%22>Web Dev Internship</text></svg>') center/cover no-repeat;"></div>
+          <div style="padding:14px;">
+            <div style="font-weight:800;color:#f97316;">Web Development Internship (Teachnook)</div>
+            <div style="color:#9aa6b2;margin-top:8px;">Built interactive UI components and responsive pages during internship; practiced front-end best-practices.</div>
+            <div style="margin-top:10px;color:#f97316;font-weight:800;">See code →</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE / EXPERIENCE -->
+  <section style="padding:36px 6vw;border-top:1px solid rgba(255,255,255,0.02);">
+    <div style="max-width:1100px;margin:0 auto;">
+      <h3 style="margin:0 0 12px;color:#e6eef8;">Experience & Internships</h3>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:18px;">
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <div style="width:12px;height:12px;border-radius:50%;background:#60a5fa;margin-top:6px;"></div>
+          <div style="flex:1;background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);">
+            <div style="font-weight:800;color:#cfe8ff;">Data Science & Analytics Intern — Innovate Intern (Sep 2024 – Dec 2024)</div>
+            <div style="color:#9aa6b2;margin-top:8px;">Built Google stocks project, used Power BI/Tableau and Google Colab; created a chatbot analytics framework. Gained analytics tooling experience.</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <div style="width:12px;height:12px;border-radius:50%;background:#34d399;margin-top:6px;"></div>
+          <div style="flex:1;background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);">
+            <div style="font-weight:800;color:#cfe8ff;">Web Development Internship — Teachnook (Feb 2023)</div>
+            <div style="color:#9aa6b2;margin-top:8px;">Worked on front-end tasks, practiced responsive design and UI components.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES SLIDER -->
+  <section id="certs" style="padding:44px 6vw;border-top:1px solid rgba(255,255,255,0.02);background:linear-gradient(180deg,#08121a,#07121a);">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <h3 style="margin:0;color:#e6eef8;">Certificates</h3>
+        <div style="color:#9aa6b2;">Selected achievements & training</div>
+      </div>
+
+      <div style="margin-top:18px;position:relative;">
+        <div id="certCarousel" style="display:flex;gap:18px;overflow:hidden;padding-bottom:12px;">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='720'><rect width='100%' height='100%' fill='%230b1220'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23fff' font-size='36' font-family='Arial'>Introduction to Databases — Certificate</text></svg>" alt="cert1" style="border-radius:8px;width:100%;max-width:920px;min-height:260px;object-fit:cover;box-shadow:0 10px 40px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03);">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='720'><rect width='100%' height='100%' fill='%230b1220'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23fff' font-size='36' font-family='Arial'>Data Analytics Simulation — Accenture (Forage)</text></svg>" alt="cert2" style="border-radius:8px;width:100%;max-width:920px;min-height:260px;object-fit:cover;box-shadow:0 10px 40px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03);">
+        </div>
+
+        <div style="position:absolute;right:8px;top:0;display:flex;gap:8px;">
+          <button onclick="slideCert(-1)" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);padding:10px;border-radius:10px;color:#cfe8ff;">◀</button>
+          <button onclick="slideCert(1)" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);padding:10px;border-radius:10px;color:#cfe8ff;">▶</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section style="padding:36px 6vw;border-top:1px dashed rgba(255,255,255,0.01);">
+    <div style="max-width:1100px;margin:0 auto;">
+      <h3 style="margin:0;color:#e6eef8;">Testimonials</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px;">
+        <div style="background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;">
+          <div style="font-weight:800;color:#60a5fa;">Mentor — Innovate Intern</div>
+          <div style="color:#9aa6b2;margin-top:8px;">"Niharika showed initiative and delivered clear, actionable dashboards. Strong learning ability and attention to detail."</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;">
+          <div style="font-weight:800;color:#34d399;">Project Lead</div>
+          <div style="color:#9aa6b2;margin-top:8px;">"Reliable collaborator with good communication. Provided insightful data analysis for our project."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="padding:44px 6vw;background:linear-gradient(180deg,#07121a,#06121a);border-top:1px solid rgba(255,255,255,0.02);">
+    <div style="max-width:1100px;margin:0 auto;display:flex;gap:20px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:280px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);">
+        <h3 style="margin:0 0 8px;color:#e6eef8;">Get in touch</h3>
+        <p style="color:#9aa6b2;margin:0 0 14px;">I’m open to internships, collaborations, and full-time roles in AI & Data. Send a short message and I’ll respond within a few days.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:8px;align-items:center;">
+            <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(90deg,#60a5fa,#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;">📞</div>
+            <div style="font-weight:700;color:#cfe8ff;">+91 9346436691</div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(90deg,#34d399,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;">✉️</div>
+            <div style="font-weight:700;color:#cfe8ff;">nihariaksunkara1@gmail.com</div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(90deg,#f97316,#fb7185);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;">🔗</div>
+            <a href="https://www.linkedin.com/in/niharika-sunkara-b5b5b423a/" target="_blank" style="color:#cfe8ff;text-decoration:none;font-weight:700;">LinkedIn Profile</a>
+          </div>
+        </div>
+      </div>
+
+      <form id="contactForm" onsubmit="submitContact(event)" style="flex:1;min-width:300px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);display:flex;flex-direction:column;gap:8px;">
+        <input id="name" placeholder="Your name" required style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#e6eef8;">
+        <input id="email" placeholder="Your email" type="email" required style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#e6eef8;">
+        <input id="subject" placeholder="Subject" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#e6eef8;">
+        <textarea id="message" placeholder="Your message" required style="min-height:120px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#e6eef8;"></textarea>
+        <div style="display:flex;gap:8px;justify-content:flex-end;">
+          <button type="submit" style="padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,#7c3aed,#60a5fa);border:none;color:#fff;font-weight:800;">Send Message</button>
+        </div>
+        <div id="formMsg" style="color:#86efac;font-weight:700;display:none;margin-top:6px;">Message sent (demo). Email opens in your mail client when Send is pressed.</div>
       </form>
     </div>
   </section>
 
-  <footer>
-    <p>© 2025 Your Name. All Rights Reserved.</p>
+  <!-- FOOTER -->
+  <footer style="padding:20px 6vw;border-top:1px solid rgba(255,255,255,0.02);background:linear-gradient(180deg,#06121a,#031018);">
+    <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+      <div style="display:flex;gap:12px;align-items:center;">
+        <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#7c3aed,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;">SN</div>
+        <div style="color:#9aa6b2;">© <strong>Sunkara Niharika</strong> • Crafted with care • <span style="color:#86efac;">Open to roles</span></div>
+      </div>
+
+      <div style="display:flex;gap:10px;align-items:center;">
+        <a href="https://www.linkedin.com/in/niharika-sunkara-b5b5b423a/" target="_blank" style="width:44px;height:44px;border-radius:999px;background:linear-gradient(90deg,#60a5fa,#7c3aed);display:inline-flex;align-items:center;justify-content:center;color:#012;font-weight:800;text-decoration:none;">in</a>
+        <a href="mailto:nihariaksunkara1@gmail.com" style="width:44px;height:44px;border-radius:999px;background:linear-gradient(90deg,#34d399,#06b6d4);display:inline-flex;align-items:center;justify-content:center;color:#012;font-weight:800;text-decoration:none;">✉</a>
+      </div>
+    </div>
   </footer>
 
+  <!-- PROJECT MODAL (hidden by default) -->
+  <div id="projectModal" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(2,6,23,0.6),rgba(2,6,23,0.85));z-index:2000;padding:28px;">
+    <div style="width:100%;max-width:900px;background:#07121a;border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 20px 60px rgba(2,6,23,0.8);">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <h3 id="modalTitle" style="margin:0;color:#e6eef8;"></h3>
+        <button onclick="closeModalProject()" style="background:transparent;border:none;color:#9aa6b2;font-size:22px;cursor:pointer;">✕</button>
+      </div>
+      <div id="modalBody" style="margin-top:12px;color:#9aa6b2;"></div>
+      <div style="margin-top:14px;display:flex;gap:8px;justify-content:flex-end;">
+        <a id="modalLink" href="#" target="_blank" style="display:inline-block;padding:10px 12px;border-radius:10px;background:linear-gradient(90deg,#60a5fa,#7c3aed);color:#fff;text-decoration:none;font-weight:700;">Open demo</a>
+        <button onclick="closeModalProject()" style="padding:10px 12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:#cfe8ff;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
   <script>
-    document.getElementById("contactForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      alert("Thank you! Your message has been submitted.");
+    // Typing animation (phrases)
+    const phrases = ["AI & Data Science Enthusiast", "Power BI dashboards • ML pipelines", "AWS + ETL • SQL • Web Development"];
+    let pi = 0, ch = 0, forward = true;
+    const typedEl = document.getElementById('typed');
+    function tick() {
+      const txt = phrases[pi];
+      if (forward) {
+        ch++;
+        if (ch >= txt.length) { forward = false; setTimeout(tick, 900); return; }
+      } else {
+        ch--;
+        if (ch <= 0) { forward = true; pi = (pi+1)%phrases.length; setTimeout(tick, 400); return; }
+      }
+      typedEl.textContent = txt.substring(0,ch) + (forward ? '|' : '');
+      setTimeout(tick, forward ? 60 : 36);
+    }
+    tick();
+
+    // Floating canvas shapes
+    function initCanvas() {
+      const canvas = document.getElementById('floatCanvas');
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize(); window.addEventListener('resize', resize);
+      const ctx = canvas.getContext('2d');
+      const shapes = [];
+      for (let i=0;i<18;i++){
+        shapes.push({
+          x: Math.random()*canvas.width,
+          y: Math.random()*canvas.height,
+          r: 8+Math.random()*40,
+          vx: (-0.25+Math.random()*0.5),
+          vy: (-0.25+Math.random()*0.5),
+          a: 0.06+Math.random()*0.18,
+          col: `rgba(${50+Math.floor(Math.random()*180)},${120+Math.floor(Math.random()*120)},${180+Math.floor(Math.random()*60)},0.9)`
+        });
+      }
+      function draw(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        shapes.forEach(s=>{
+          s.x += s.vx;
+          s.y += s.vy;
+          if (s.x < -100) s.x = canvas.width+100;
+          if (s.x > canvas.width+100) s.x = -100;
+          if (s.y < -100) s.y = canvas.height+100;
+          if (s.y > canvas.height+100) s.y = -100;
+          ctx.beginPath();
+          ctx.fillStyle = s.col;
+          ctx.globalAlpha = s.a;
+          ctx.ellipse(s.x, s.y, s.r, s.r*0.6, 0, 0, Math.PI*2);
+          ctx.fill();
+        });
+        requestAnimationFrame(draw);
+      }
+      draw();
+    }
+    initCanvas();
+
+    // Skill bars animate on scroll
+    function animateBars() {
+      document.querySelectorAll('.bar').forEach(b=>{
+        const val = b.getAttribute('data-val');
+        b.style.transition = 'width 1200ms cubic-bezier(.2,.9,.2,1)';
+        setTimeout(()=>{ b.style.width = val + '%'; }, 250);
+      });
+    }
+    // call once at load and on scroll when section visible
+    window.addEventListener('load', animateBars);
+    window.addEventListener('scroll', ()=>{
+      const sk = document.getElementById('skills');
+      if (sk.getBoundingClientRect().top < window.innerHeight - 60) animateBars();
+    });
+
+    // Project modal content
+    function openModalProject(key) {
+      const modal = document.getElementById('projectModal');
+      const title = document.getElementById('modalTitle');
+      const body = document.getElementById('modalBody');
+      const link = document.getElementById('modalLink');
+      modal.style.display = 'flex';
+      if (key === 'stocks') {
+        title.textContent = 'Google Stocks Analysis (AWS + ETL)';
+        body.innerHTML = "<p style='margin:0;color:#9aa6b2;'>Built a pipeline using S3, ETL and Redshift to analyze Google stock historical data. Implemented time-series cleaning, feature extraction, and visualization. Demo includes anomaly detection & trend charts.</p>";
+        link.href = "#";
+        link.textContent = "View notes";
+      } else if (key === 'sales') {
+        title.textContent = 'Customer Sales Analytics (Power BI)';
+        body.innerHTML = "<p style='margin:0;color:#9aa6b2;'>Interactive Power BI dashboards showing KPIs, sales trends, and drill-down filters for different product categories. Includes exportable reports for stakeholders.</p>";
+        link.href = "#";
+        link.textContent = "Open dashboard";
+      } else {
+        title.textContent = 'Web Development Internship — Teachnook';
+        body.innerHTML = "<p style='margin:0;color:#9aa6b2;'>Worked on creating responsive UI components, improving accessibility, and implementing front-end best practices.</p>";
+        link.href = "#";
+        link.textContent = "See repo";
+      }
+    }
+    function closeModalProject(){ document.getElementById('projectModal').style.display='none'; }
+
+    // Certificates slider (simple)
+    let certIndex = 0;
+    function slideCert(dir) {
+      const wrapper = document.getElementById('certCarousel');
+      const children = Array.from(wrapper.children);
+      certIndex = (certIndex + dir + children.length) % children.length;
+      const width = children[certIndex].getBoundingClientRect().width + 18;
+      wrapper.style.transition = 'transform 450ms ease';
+      wrapper.style.transform = `translateX(-${certIndex * width}px)`;
+    }
+
+    // Contact form (demo): opens mail client
+    function submitContact(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim() || "Inquiry from portfolio";
+      const message = document.getElementById('message').value.trim();
+      if (!name || !email || !message) return alert('Please fill required fields.');
+      // Open user's mail client as demo (server integration would be needed for real send)
+      const mailto = `mailto:nihariaksunkara1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: "+name+" (%20"+email+")%0D%0A%0D%0A"+message)}`;
+      window.location.href = mailto;
+      document.getElementById('formMsg').style.display = 'block';
+    }
+
+    // Basic accessibility: close modal on ESC
+    window.addEventListener('keydown',(e)=>{ if (e.key==='Escape') closeModalProject(); });
+
+    // Small responsive adjustments (since we used inline CSS instead of media queries)
+    function responsiveAdjust(){
+      const w = window.innerWidth;
+      // reduce hero font on small screens
+      document.querySelectorAll('h1').forEach(h=>{
+        if (w < 520) h.style.fontSize = '28px'; else h.style.fontSize = '36px';
+      });
+    }
+    responsiveAdjust(); window.addEventListener('resize', responsiveAdjust);
+
+    // Progressive enhancement: reveal sections with slight fade
+    document.querySelectorAll('section').forEach((s,idx)=>{
+      s.style.opacity = 0; s.style.transform = 'translateY(8px)'; s.style.transition = 'all 600ms cubic-bezier(.2,.9,.2,1) '+(idx*80)+'ms';
+      setTimeout(()=>{ s.style.opacity = 1; s.style.transform = 'translateY(0)'; }, 120);
     });
   </script>
-
 </body>
 </html>
-
-<!-- hook test -->
-<!-- hook test -->
-<!-- auto commit test -->
-<!-- auto commit test final -->
-
-
-
